@@ -2,15 +2,7 @@
   <div class="container">
     <h1>Comentários</h1>
     <hr />
-    <div class="form-todo form-group">
-      <p>
-        <input placeholder="nome" type="text" name="author" class="form-control" v-model="name" />
-      </p>
-      <p>
-        <textarea placeholder="Comentário" name="message"  class="form-control" v-model="message" />
-      </p>
-      <button v-on:click="addComment" type="submit" class="btn btn-primary">Comentar</button>
-    </div>
+    <FormInput v-on:add-comment="addComment" />
     <div class="list-group">
       <div class="list-group-item" v-for="(comment, index) in allComments" v-bind:key="index">
         <span class="comment__author">Autor: <strong>{{ comment.name }}</strong></span>
@@ -25,27 +17,20 @@
 </template>
 
 <script>
+import FormInput from './FormInput';
+
 export default {
+  components: {
+    FormInput,
+  },
   data() {
     return {
-      comments: [],
-      name: '',
-      message: '',
+      comments: []
     }
   },
   methods: {
-    addComment() {
-      if (this.message.trim() === '') {
-        return false;
-      }
-
-      this.comments.push({
-        name: this.name,
-        message: this.message
-      });
-
-      this.name = '';
-      this.message = '';
+    addComment(comment) {
+      this.comments.push(comment);
     },
 
     removeComment(index) {
