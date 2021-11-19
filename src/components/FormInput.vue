@@ -1,13 +1,13 @@
 <template>
   <div class="form-todo form-group">
-      <p>
-        <input placeholder="nome" type="text" name="author" class="form-control" v-model="name" />
-      </p>
-      <p>
-        <textarea placeholder="Comentário" name="message"  class="form-control" v-model="message" />
-      </p>
-      <button v-on:click="addComment" type="submit" class="btn btn-primary">Comentar</button>
-    </div>
+    <p>
+      <input placeholder="Nome" type="text" name="author" class="form-control" v-model="name" />
+    </p>
+    <p>
+      <textarea placeholder="Comentário" name="message"  class="form-control" v-model="message" />
+    </p>
+    <button v-on:click="addComment" type="submit" class="btn btn-primary">Comentar</button>
+  </div>
 </template>
 
 <script>
